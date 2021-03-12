@@ -14,9 +14,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         //Initialize Mopub
         let sdkConfig = MPMoPubConfiguration(adUnitIdForAppInitialization: "0ac59b0996d947309c33f59d6676399f")
         sdkConfig.loggingLevel = .info
-        MoPub.sharedInstance().initializeSdk(with: sdkConfig){
-            print("mopub initialized =====")
-        }
+        MoPub.sharedInstance().initializeSdk(with: sdkConfig)
         
         return true
     }

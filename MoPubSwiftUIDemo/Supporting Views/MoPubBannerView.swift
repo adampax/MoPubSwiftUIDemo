@@ -9,9 +9,6 @@ import MoPubSDK
 import SwiftUI
 import UIKit
 
-fileprivate let ViewTag = 42
-fileprivate let MoPubTestBannerId = "0ac59b0996d947309c33f59d6676399f"
-
 struct MoPubBannerView: View {
     let adUnitID: String
     let adSize: CGSize
@@ -19,46 +16,31 @@ struct MoPubBannerView: View {
     var body: some View {
         
         MoPubBannerViewRepresentable(adUnitID: adUnitID, adSize: adSize)
-            .frame(height: adSize.height)
+            .frame(width: adSize.width, height: adSize.height)
     }
 }
 
-struct MoPubBannerViewRepresentable: UIViewControllerRepresentable {
+struct MoPubBannerViewRepresentable: UIViewRepresentable {
     let adUnitID: String
     let adSize: CGSize
     
     
-    func makeUIViewController(context: Context) -> CustomViewController {
+    func makeUIView(context: Context) -> MPAdView {
         
-        var adId: String
+        let moPubBannerView = type(of: MPAdView()).init(adUnitId:adUnitID)!
         
-        #if targetEnvironment(simulator)
-            adId = MoPubTestBannerId
-        #else
-            adId = adUnitID
-        #endif
-        
-        let moPubBannerView = type(of: MPAdView()).init(adUnitId:adId)!
-        
-        let viewController = CustomViewController()
-        
-        viewController.view.frame.size.height = adSize.height
-
-        
-        moPubBannerView.frame = viewController.view.bounds
+        //adSize needs to be defined with the exact dimensions of the desired ad, ex: 320x50.
+        //Only defining the height using  something like kMPPresetMaxAdSize50Height will define a width of 0, causing the ad not to load
+        moPubBannerView.frame.size = adSize
         
         moPubBannerView.delegate = context.coordinator
-        
-        moPubBannerView.tag = ViewTag
-                
-        //load banner after initialization
-        viewController.view.addSubview(moPubBannerView)
+                        
         moPubBannerView.loadAd()
         
-        return viewController
+        return moPubBannerView
     }
     
-    func updateUIViewController(_ uiViewController: CustomViewController, context: Context) { }
+    func updateUIView(_ uiView: MPAdView, context: Context) { }
     
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
@@ -76,33 +58,21 @@ struct MoPubBannerViewRepresentable: UIViewControllerRepresentable {
             return  UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController
         }
         
-        //events from MPAdViewDelegate can go here
+        //Events from MPAdViewDelegate can go here
+        //These can be removed if not used
         func adViewDidLoadAd(_ view: MPAdView!, adSize: CGSize) {
             print("ad loaded with size: \(adSize)")
         }
-    }
-    
-    //The CustomViewController is needed to track the orientation change and update the MPAdView bounds to match that of the parent view controller's
-    class CustomViewController: UIViewController {
-
-        override func viewDidLoad() {
-            super.viewDidLoad()
-
-            NotificationCenter.default.addObserver(self, selector: #selector(orientationDidChange), name: UIDevice.orientationDidChangeNotification, object: nil)
-        }
-
-        deinit {
-            NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
-        }
-
-        @objc func orientationDidChange() {
-            
-            //when device rotates, we need to reset the adView frame to match the parent view controller
-            if let adView = view.viewWithTag(ViewTag) as? MPAdView {
-                adView.frame = view.bounds
+        
+        func adView(_ view: MPAdView!, didFailToLoadAdWithError error: Error!) {
+            if let error = error {
+                print("failed to load ad with error: \(error)")
             }
-
         }
-
+        
+        func adViewDidFail(toLoadAd view: MPAdView!) {
+            print("failed to load ad")
+        }
+        
     }
 }

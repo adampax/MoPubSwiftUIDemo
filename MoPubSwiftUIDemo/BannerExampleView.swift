@@ -11,10 +11,12 @@ import MoPubSDK
 struct BannerExampleView: View {
     var body: some View {
         VStack{
-            Text("A Banner Ad")
+            Text("320x50 Banner")
                 .padding()
-            MoPubBannerView(adUnitID: "0ac59b0996d947309c33f59d6676399f", adSize: kMPPresetMaxAdSize50Height)
-        }
+            MoPubBannerView(adUnitID: "0ac59b0996d947309c33f59d6676399f", adSize: CGSize(width: 320, height: 50))
+            
+            
+        }.navigationTitle("Banners")
     }
 }
 

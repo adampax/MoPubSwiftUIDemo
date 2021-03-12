@@ -28,7 +28,7 @@
 		66A7195725F956A200630B0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66A7195A25F956A200630B0D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		66A7195C25F956A200630B0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		66A7196725F957EC00630B0D /* MoPubBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MoPubBannerView.swift; path = "Supporting Views/MoPubBannerView.swift"; sourceTree = "<group>"; };
+		66A7196725F957EC00630B0D /* MoPubBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoPubBannerView.swift; sourceTree = "<group>"; };
 		ACC87A383F9820F093EF6089 /* Pods_MoPubSwiftUIDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoPubSwiftUIDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3509F7A0894A7F1650CB570 /* Pods-MoPubSwiftUIDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoPubSwiftUIDemo.release.xcconfig"; path = "Target Support Files/Pods-MoPubSwiftUIDemo/Pods-MoPubSwiftUIDemo.release.xcconfig"; sourceTree = "<group>"; };
 		CB358F6D1A42D68FA57044A5 /* Pods-MoPubSwiftUIDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoPubSwiftUIDemo.debug.xcconfig"; path = "Target Support Files/Pods-MoPubSwiftUIDemo/Pods-MoPubSwiftUIDemo.debug.xcconfig"; sourceTree = "<group>"; };

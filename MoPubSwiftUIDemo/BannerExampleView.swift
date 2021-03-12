@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import MoPubSDK
 
 struct BannerExampleView: View {
     var body: some View {

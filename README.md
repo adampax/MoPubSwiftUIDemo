@@ -1,6 +1,14 @@
 # MoPub SDK Demo for SwiftUI
 
-Examples for implementing the [MobPub iOS SDK](https://github.com/mopub/mopub-ios-sdk) in [SwiftUI](https://developer.apple.com/xcode/swiftui/)
+Examples for implementing the [MobPub iOS SDK](https://github.com/mopub/mopub-ios-sdk) in SwiftUI
+
+Detailed instructions on [using MoPub with SwiftUI](https://adampaxton.com/how-to-use-mopub-banner-ads-in-swiftui/) can be found here:
+
+https://adampaxton.com/how-to-use-mopub-banner-ads-in-swiftui/
+
+![Animation](https://raw.github.com/adampax/MoPubSwiftUIDemo/main/screenshots/mopubswiftuidemo.gif)
+
+
 
 ### Ad Types
 The demo currently has examples for the following ad types:
